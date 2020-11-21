@@ -1,0 +1,32 @@
+{
+  "name": "atom-db",
+  "author": "Matthew Zito (goldmund)",
+  "keywords": [
+    "database",
+    "oodbms",
+    "nosql"
+  ],
+  "license": "MIT",
+  "version": "1.0.0",
+  "description": "A lightweight, hyper-flexible Object database",
+  "main": "lib/index.js",
+  "files": [
+    "lib/",
+    "CONTRIBUTING.md"
+  ],
+  "scripts": {
+    "env": "node -e 'console.log(process.env)' | grep npm",
+    "format": "prettier --check src/**/*.js",
+    "format:fix": "prettier --write src/**/*.js",
+    "lint": "eslint ./ --no-fix",
+    "lint:fix": "eslint ./ --fix",
+    "precommit": "concurrently \"npm run format\" \"npm run lint\" --kill-others-on-fail"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "concurrently": "^5.3.0",
+    "eslint": "^7.14.0",
+    "prettier": "^2.2.0",
+    "rimraf": "^3.0.2"
+  }
+}
