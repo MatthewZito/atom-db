@@ -1,3 +1,5 @@
 const Database = require("./core/Database");
 
-module.exports = init = name => new Database(name);
+const init = name => new Database(name);
+
+module.exports = init;
