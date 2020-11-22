@@ -14,22 +14,42 @@
     "lib/",
     "CONTRIBUTING.md"
   ],
+  "private": false,
   "scripts": {
-	"clean": "rimraf ./coverage && rimraf ./lib",
+    "clean": "rimraf ./coverage && rimraf ./lib",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "env": "node -e 'console.log(process.env)' | grep npm",
     "format": "prettier --check src/**/*.js",
     "format:fix": "prettier --write src/**/*.js",
     "lint": "eslint ./ --no-fix",
     "lint:fix": "eslint ./ --fix",
-	"precommit": "concurrently \"npm run test\" \"npm run format\" \"npm run lint\" --kill-others-on-fail",
-	"test": "jest && rimraf ./coverage",
-	"test:coverage": "jest --coverage && rimraf ./coverage",
-    "test:mon": "jest --watch __tests__.*"
+    "precommit": "concurrently \"npm run test\" \"npm run format\" \"npm run lint\" --kill-others-on-fail",
+    "test": "jest && rimraf ./coverage",
+    "test:coverage": "jest --coverage && rimraf ./coverage",
+    "test:mon": "jest --watch __tests__.*",
+    "prebuild": "rimraf ./lib",
+    "build": "babel ./src -d ./lib"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MatthewZito/atom-db.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MatthewZito/atom-db.git/issues"
+  },
+  "homepage": "https://github.com/MatthewZito/atom-db.git#readme",
   "devDependencies": {
+    "@babel/cli": "^7.12.7",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "babel-eslint": "^10.1.0",
+    "babel-preset-minify": "^0.5.1",
     "concurrently": "^5.3.0",
+    "coveralls": "^3.1.0",
     "eslint": "^7.14.0",
+    "husky": "^4.3.0",
     "jest": "^26.6.3",
     "prettier": "^2.2.0",
     "rimraf": "^3.0.2"
