@@ -29,9 +29,11 @@ class Store {
 		throwIfInvalidKey(key);
 		const data = this.data[key];
 
-		if (!data) this.emitter.emit("error")(new KeyError(key, this.name));
-
-		this.emitter.emit("success")(data);
+		if (!data) {
+			this.emitter.emit("error")(new KeyError(key, this.name));
+		} else {
+			this.emitter.emit("success")(data);
+		}
 	}
 
 	set(key, data) {
