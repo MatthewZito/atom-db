@@ -1,13 +1,25 @@
-const isFunction = prospect => {
-	if (typeof prospect !== "function")
-		throw new Error(`${prospect} is not a function.`);
+const { isFunction, isString, isNumber } = require("./isType");
+const ValidationError = require("../errors/ValidationError");
+
+const throwIfNotFn = prospect => {
+	if (!isFunction(prospect))
+		throw new ValidationError(`${prospect} is not a function.`);
 };
 
-const isArgumentExtant = () => {
-	throw new Error("Missing required constructor argument.");
+const throwIfInvalidKey = prospect => {
+	if (!isString(prospect) && !isNumber(prospect)) {
+		throw new ValidationError(
+			`'${prospect}' is not a valid key. Must be a string or number.`
+		);
+	}
+};
+
+const throwIfNoArgument = () => {
+	throw new ValidationError("Missing required constructor argument.");
 };
 
 module.exports = {
-	isFunction,
-	isArgumentExtant
+	throwIfNotFn,
+	throwIfInvalidKey,
+	throwIfNoArgument
 };

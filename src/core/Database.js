@@ -1,8 +1,8 @@
 const Store = require("./Store.js");
-const { isArgumentExtant } = require("../utils/typeCheck.js");
+const { throwIfNoArgument } = require("../utils/typeCheck.js");
 
 class Database {
-	constructor(name = isArgumentExtant()) {
+	constructor(name = throwIfNoArgument()) {
 		this.name = name;
 		this.stores = [];
 	}

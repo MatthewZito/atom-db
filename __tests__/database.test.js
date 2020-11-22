@@ -31,11 +31,9 @@ describe("Evaluation of Database class", () => {
 		});
 
 		it("Should throw an error when registering an existing store", () => {
-			expect(() =>
-				db
-					.registerObjectStore(storeName)
-					.toThrow(`Store ${storeName} has already been registered.`)
-			);
+			expect(() => db
+				.registerObjectStore(storeName)
+				.toThrow(`Store ${storeName} has already been registered.`));
 		});
 
 		it("Should find the specified store index", () => {

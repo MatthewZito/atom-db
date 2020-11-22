@@ -1,4 +1,7 @@
-const { isFunction, isArgumentExtant } = require("../src/utils/typeCheck.js");
+const {
+	throwIfNotFn,
+	throwIfNoArgument
+} = require("../src/utils/typeCheck.js");
 
 const notFunctions = [
 	"string",
@@ -26,36 +29,30 @@ describe("Evaluation of package utilities", () => {
 	describe("Evaluation of function type-check", () => {
 		it("Should throw an error when provided a non-function argument", () => {
 			notFunctions.forEach(item => {
-				expect(() =>
-					isFunction(item).toThrow(`${item} is not a function.`)
-				);
+				expect(() => throwIfNotFn(item).toThrow(`${item} is not a function.`));
 			});
 		});
 
 		it("Should return when provided an arrow function", () => {
-			expect(isFunction(fnArr)).toBeUndefined();
+			expect(throwIfNotFn(fnArr)).toBeUndefined();
 		});
 
 		it("Should return when provided a function declaration", () => {
-			expect(isFunction(fnDec)).toBeUndefined();
+			expect(throwIfNotFn(fnDec)).toBeUndefined();
 		});
 
 		it("Should return when provided a function expression", () => {
-			expect(isFunction(fnExpr)).toBeUndefined();
+			expect(throwIfNotFn(fnExpr)).toBeUndefined();
 		});
 
 		it("Should return when provided a function constructor", () => {
-			expect(isFunction(fnCon)).toBeUndefined();
+			expect(throwIfNotFn(fnCon)).toBeUndefined();
 		});
 	});
 
 	describe("Evaluation of argument exception trigger", () => {
 		it("Should throw an error when called", () => {
-			expect(() =>
-				isArgumentExtant().toThrow(
-					"Missing required constructor argument."
-				)
-			);
+			expect(() => throwIfNoArgument().toThrow("Missing required constructor argument."));
 		});
 	});
 });

@@ -16,15 +16,15 @@
   ],
   "scripts": {
 	"clean": "rimraf ./coverage && rimraf ./lib",
-    "coverage": "jest --coverage && rimraf ./coverage",
     "env": "node -e 'console.log(process.env)' | grep npm",
     "format": "prettier --check src/**/*.js",
     "format:fix": "prettier --write src/**/*.js",
     "lint": "eslint ./ --no-fix",
     "lint:fix": "eslint ./ --fix",
-	"precommit": "concurrently \"npm run format\" \"npm run lint\" --kill-others-on-fail",
+	"precommit": "concurrently \"npm run test\" \"npm run format\" \"npm run lint\" --kill-others-on-fail",
 	"test": "jest && rimraf ./coverage",
-    "testmon": "jest --watch __tests__.*"
+	"test:coverage": "jest --coverage && rimraf ./coverage",
+    "test:mon": "jest --watch __tests__.*"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

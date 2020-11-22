@@ -1,13 +1,12 @@
 const Store = require("../src/core/Store.js");
+const KeyError = require("../src/errors/KeyError.js");
 
 describe("Evaluation of Store class", () => {
 	describe("Evaluation of store instantiation", () => {
 		const storeName = "test";
 
 		it("Should throw an error when missing required argument 'name'", () => {
-			expect(() =>
-				new Store().toThrow("Missing required constructor argument.")
-			);
+			expect(() => new Store().toThrow("Missing required constructor argument."));
 		});
 
 		it(`Should create a new Store object with a name of ${storeName}`, () => {
@@ -48,11 +47,9 @@ describe("Evaluation of Store class", () => {
 		it("Should throw when getting a key prior to registering the onSuccess event", () => {
 			store.set(storeKey, storeValue);
 
-			expect(() =>
-				store
-					.get(storeKey)
-					.toThrow(`"success" event has not been registered.`)
-			);
+			expect(() => store
+				.get(storeKey)
+				.toThrow(`"success" event has not been registered.`));
 		});
 
 		it("Should retrieve a key's corresponding value from the store via the onSuccess event", () => {
@@ -68,11 +65,9 @@ describe("Evaluation of Store class", () => {
 		});
 
 		it("Should throw when getting an invalid key prior to registering the onError event", () => {
-			expect(() =>
-				store
-					.get("none")
-					.toThrow(`"error" event has not been registered.`)
-			);
+			expect(() => store
+				.get("none")
+				.toThrow(`"error" event has not been registered.`));
 		});
 
 		it("Should emit an error when retrieving a non-existent key from the store via the onError event", () => {
@@ -84,9 +79,7 @@ describe("Evaluation of Store class", () => {
 			});
 
 			store.get(nonExtantKey);
-			const err = new Error(
-				`Key ${nonExtantKey} does not exist in mock.`
-			);
+			const err = new KeyError(nonExtantKey, "mock");
 
 			expect(returnValue).toEqual(err);
 		});
