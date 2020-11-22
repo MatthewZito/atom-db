@@ -8,7 +8,7 @@
   ],
   "license": "MIT",
   "version": "0.0.0-development",
-  "description": "A lightweight, hyper-flexible Object database",
+  "description": "A lightweight, hyper-flexible object database",
   "main": "lib/index.js",
   "files": [
     "lib/",

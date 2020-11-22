@@ -1,4 +1,4 @@
-# atom-db | a no-hassle database for any environment
+## atom-db | a flexible object database for any environment
 [![Coverage Status](https://coveralls.io/repos/github/MatthewZito/atom-db/badge.svg?branch=master)](https://coveralls.io/github/MatthewZito/atom-db?branch=master)
 [![Build Status](https://travis-ci.org/MatthewZito/atom-db.svg?branch=master)](https://travis-ci.org/MatthewZito/atom-db)
 [![npm version](https://badge.fury.io/js/vivisector.svg)](https://badge.fury.io/js/atom-db)

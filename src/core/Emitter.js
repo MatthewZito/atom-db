@@ -13,7 +13,11 @@ class Emitter {
 
 	emit(name) {
 		if (!this.handlers.has(name)) {
-			throw new Error(`${name} event has not been registered`);
+			throw new Error(
+				`'on${
+					name.charAt(0).toUpperCase() + name.slice(1)
+				}' event has not been registered`
+			);
 		}
 		return (...args) => {
 			this.handlers.get(name)(...args);

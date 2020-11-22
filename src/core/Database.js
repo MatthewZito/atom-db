@@ -10,7 +10,7 @@ class Database {
 	registerObjectStore(name) {
 		const idx = this._findStore(name);
 		if (idx !== -1) {
-			throw new Error(`Store ${name} has already been registered`);
+			throw new Error(`Store '${name}' has already been registered`);
 		}
 		const store = this._createStore(name);
 		this.stores.push(store);

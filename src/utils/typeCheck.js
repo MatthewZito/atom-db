@@ -3,7 +3,7 @@ const ValidationError = require("../errors/ValidationError");
 
 const throwIfNotFn = prospect => {
 	if (!isFunction(prospect))
-		throw new ValidationError(`${prospect} is not a function`);
+		throw new ValidationError(`'${prospect}' is not a function`);
 };
 
 const throwIfInvalidKey = prospect => {

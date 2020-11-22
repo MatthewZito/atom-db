@@ -2,8 +2,9 @@ const Emitter = require("../src/core/Emitter.js");
 
 describe("Evaluation of Emitter class", () => {
 	describe("Evaluation of Emitter instantiation", () => {
-		it("Should throw an error when missing required argument 'name'", () => {
-			expect(() => new Emitter().toThrow("Missing required constructor argument."));
+		const e = new Emitter();
+		it("Should have a Map property", () => {
+			expect(e.handlers).toEqual(new Map());
 		});
 	});
 	// TODO handle re-subscription
@@ -61,9 +62,9 @@ describe("Evaluation of Emitter class", () => {
 		it("Should throw an error if an event that has not been registered is emitted", () => {
 			const shouldFail = "success";
 
-			expect(() => emitter
-				.emit(shouldFail)
-				.toThrow(`${shouldFail} event has not been registered.`));
+			expect(() => {
+				emitter.emit(shouldFail)
+			}).toThrow(`'on${shouldFail.charAt(0).toUpperCase() + shouldFail.slice(1)}' event has not been registered`);
 		});
 	});
 });

@@ -5,9 +5,9 @@ describe("Evaluation of Database class", () => {
 		const dbName = "test";
 
 		it("Should throw an error when missing required argument 'name'", () => {
-			expect(() =>
-				new Database().toThrow("Missing required constructor argument.")
-			);
+			expect(() => {
+				new Database()
+			}).toThrow("Missing required constructor argument");
 		});
 
 		it(`Should create a new Database object with a name of ${dbName}`, () => {
@@ -31,9 +31,9 @@ describe("Evaluation of Database class", () => {
 		});
 
 		it("Should throw an error when registering an existing store", () => {
-			expect(() => db
-				.registerObjectStore(storeName)
-				.toThrow(`Store ${storeName} has already been registered.`));
+			expect(() => { 
+				db.registerObjectStore(storeName)
+			}).toThrow(`Store '${storeName}' has already been registered`);
 		});
 
 		it("Should find the specified store index", () => {
