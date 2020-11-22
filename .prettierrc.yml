@@ -1,6 +1,6 @@
 trailingComma: "none"
 tabWidth: 4
-useTabs: false
+useTabs: true
 semi: true
 singleQuote: false
 arrowParens: "avoid"
